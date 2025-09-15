@@ -20,8 +20,36 @@
             Console.Write($"Hur många {productName} vill du köpa?: ");
             productQuantity = ValidateIntInput(Console.ReadLine());
             Console.WriteLine();
-            totalPrice
+            totalPrice = CalculateTotal(productName, productPrice, productQuantity);
             Console.WriteLine($"Totalt att betala:");
+        }
+        // Metod för att validera double input
+        static double ValidateDoubleInput(string input)
+        {
+            double value;
+            while (!double.TryParse(input, out value) || value < 0)
+            {
+                Console.Write("Ogiltig inmatning. Vänligen ange ett giltigt pris: ");
+                input = Console.ReadLine();
+            }
+            return value;
+        }
+        // Metod för att validera int input
+        static int ValidateIntInput(string input)
+        {
+            int value;
+            while (!int.TryParse(input, out value) || value < 0)
+            {
+                Console.Write("Ogiltig inmatning. Vänligen ange ett giltigt antal: ");
+                input = Console.ReadLine();
+            }
+            return value;
+        }
+        // Metod för att beräkna totalpriset inklusive moms
+        static double CalculateTotal(string product, double price, int quantity, double tax = 0.25)
+        {
+            double total = (price * quantity) * (1 + tax);
+            return total;
         }
     }
 }
