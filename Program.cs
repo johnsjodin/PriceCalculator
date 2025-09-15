@@ -21,7 +21,7 @@
             productQuantity = ValidateIntInput(Console.ReadLine());
             Console.WriteLine();
             totalPrice = CalculateTotal(productName, productPrice, productQuantity);
-            Console.WriteLine($"Totalt att betala:");
+            Console.WriteLine($"Totalt att betala: {totalPrice}");
         }
         // Metod för att validera double input
         static double ValidateDoubleInput(string input)
