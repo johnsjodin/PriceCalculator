@@ -24,12 +24,13 @@
             productQuantity = ValidateIntInput(Console.ReadLine());
             Console.WriteLine();
 
-            Console.Write($"Ange momssats (valfritt): ");
+            Console.Write($"Ange momssats (valfritt, annars 25%): ");
             taxRate = ValidateTaxInput(Console.ReadLine());
             Console.WriteLine();
 
             totalPrice = CalculateTotal(productName, productPrice, productQuantity, taxRate);
-            Console.WriteLine($"Totalt att betala: {totalPrice}");
+            totalPrice = Math.Round(totalPrice, 2);
+            Console.WriteLine($"Totalt att betala: {totalPrice:F2}");
         }
         // Metod för att validera double input
         static double ValidateDoubleInput(string input)
@@ -70,7 +71,7 @@
             return value;
         }
         // Metod för att beräkna totalpriset inklusive moms
-        static double CalculateTotal(string product, double price, int quantity, double tax = 0.25)
+        static double CalculateTotal(string product, double price, int quantity, double tax)
         {
             double total = (price * quantity) * (1 + tax);
             return total;
